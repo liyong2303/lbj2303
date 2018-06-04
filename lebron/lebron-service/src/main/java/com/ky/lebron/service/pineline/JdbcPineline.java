@@ -30,25 +30,33 @@ public class JdbcPineline implements Pipeline{
 		hpNews.setArticle(resultItems.get("article"));
 		hpNews.setContent(resultItems.get("content"));
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		Object dateO = resultItems.get("date");
 		Date date;
 		try {
-			date = sdf.parse((String)resultItems.get("date"));
+			if(dateO != null){
+			date = sdf.parse((String)dateO);
 			hpNews.setDate(date);
+		}
+			
 		} catch (ParseException e) {
 			log.error("",e);
 		}
 		hpNews.setCateId(2l);
 		hpNews.setPicUrl(resultItems.get("picUrl"));
+		hpNews.setPicUrlB(resultItems.get("picUrlB"));
 		hpNews.setSource(resultItems.get("source"));
 		hpNews.setSourUrl(resultItems.get("sourUrl"));
 		hpNews.setOriUrl(resultItems.get("oriUrl"));
 		hpNews.setNewsId(resultItems.get("id"));
+		hpNews.setStatus("1");
 		
-		int i = hpNewsMapper.insert(hpNews);
-		if (i >= 1) {
-			log.info("插入成功");
-		} else {
-			log.info("插入失败");
+		if(hpNews.getNewsId() != null){
+			int i = hpNewsMapper.insert(hpNews);
+			if (i >= 1) {
+				log.info("插入成功");
+			} else {
+				log.info("插入失败");
+			}
 		}
 		
 	}

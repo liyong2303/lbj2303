@@ -15,11 +15,19 @@ public class HpNews {
 
     private String oriUrl;
 
+    private String newsId;
+
+    private String status;
+
     private String picUrl;
 
-    private Long cateId;
+    private String picUrlB;
 
-    private String newsId;
+    private String picHost;
+
+    private String picHostB;
+
+    private Long cateId;
 
     private String content;
 
@@ -71,6 +79,22 @@ public class HpNews {
         this.oriUrl = oriUrl == null ? null : oriUrl.trim();
     }
 
+    public String getNewsId() {
+        return newsId;
+    }
+
+    public void setNewsId(String newsId) {
+        this.newsId = newsId == null ? null : newsId.trim();
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
+    }
+
     public String getPicUrl() {
         return picUrl;
     }
@@ -79,20 +103,36 @@ public class HpNews {
         this.picUrl = picUrl == null ? null : picUrl.trim();
     }
 
+    public String getPicUrlB() {
+        return picUrlB;
+    }
+
+    public void setPicUrlB(String picUrlB) {
+        this.picUrlB = picUrlB == null ? null : picUrlB.trim();
+    }
+
+    public String getPicHost() {
+        return picHost;
+    }
+
+    public void setPicHost(String picHost) {
+        this.picHost = picHost == null ? null : picHost.trim();
+    }
+
+    public String getPicHostB() {
+        return picHostB;
+    }
+
+    public void setPicHostB(String picHostB) {
+        this.picHostB = picHostB == null ? null : picHostB.trim();
+    }
+
     public Long getCateId() {
         return cateId;
     }
 
     public void setCateId(Long cateId) {
         this.cateId = cateId;
-    }
-
-    public String getNewsId() {
-        return newsId;
-    }
-
-    public void setNewsId(String newsId) {
-        this.newsId = newsId == null ? null : newsId.trim();
     }
 
     public String getContent() {

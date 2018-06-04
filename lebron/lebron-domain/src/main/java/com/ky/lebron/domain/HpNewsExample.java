@@ -505,6 +505,146 @@ public class HpNewsExample {
             return (Criteria) this;
         }
 
+        public Criteria andNewsIdIsNull() {
+            addCriterion("NEWS_ID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsIdIsNotNull() {
+            addCriterion("NEWS_ID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsIdEqualTo(String value) {
+            addCriterion("NEWS_ID =", value, "newsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsIdNotEqualTo(String value) {
+            addCriterion("NEWS_ID <>", value, "newsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsIdGreaterThan(String value) {
+            addCriterion("NEWS_ID >", value, "newsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsIdGreaterThanOrEqualTo(String value) {
+            addCriterion("NEWS_ID >=", value, "newsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsIdLessThan(String value) {
+            addCriterion("NEWS_ID <", value, "newsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsIdLessThanOrEqualTo(String value) {
+            addCriterion("NEWS_ID <=", value, "newsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsIdLike(String value) {
+            addCriterion("NEWS_ID like", value, "newsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsIdNotLike(String value) {
+            addCriterion("NEWS_ID not like", value, "newsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsIdIn(List<String> values) {
+            addCriterion("NEWS_ID in", values, "newsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsIdNotIn(List<String> values) {
+            addCriterion("NEWS_ID not in", values, "newsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsIdBetween(String value1, String value2) {
+            addCriterion("NEWS_ID between", value1, value2, "newsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsIdNotBetween(String value1, String value2) {
+            addCriterion("NEWS_ID not between", value1, value2, "newsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusIsNull() {
+            addCriterion("STATUS is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusIsNotNull() {
+            addCriterion("STATUS is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusEqualTo(String value) {
+            addCriterion("STATUS =", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusNotEqualTo(String value) {
+            addCriterion("STATUS <>", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusGreaterThan(String value) {
+            addCriterion("STATUS >", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusGreaterThanOrEqualTo(String value) {
+            addCriterion("STATUS >=", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusLessThan(String value) {
+            addCriterion("STATUS <", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusLessThanOrEqualTo(String value) {
+            addCriterion("STATUS <=", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusLike(String value) {
+            addCriterion("STATUS like", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusNotLike(String value) {
+            addCriterion("STATUS not like", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusIn(List<String> values) {
+            addCriterion("STATUS in", values, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusNotIn(List<String> values) {
+            addCriterion("STATUS not in", values, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusBetween(String value1, String value2) {
+            addCriterion("STATUS between", value1, value2, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusNotBetween(String value1, String value2) {
+            addCriterion("STATUS not between", value1, value2, "status");
+            return (Criteria) this;
+        }
+
         public Criteria andPicUrlIsNull() {
             addCriterion("PIC_URL is null");
             return (Criteria) this;
@@ -575,6 +715,216 @@ public class HpNewsExample {
             return (Criteria) this;
         }
 
+        public Criteria andPicUrlBIsNull() {
+            addCriterion("PIC_URL_B is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlBIsNotNull() {
+            addCriterion("PIC_URL_B is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlBEqualTo(String value) {
+            addCriterion("PIC_URL_B =", value, "picUrlB");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlBNotEqualTo(String value) {
+            addCriterion("PIC_URL_B <>", value, "picUrlB");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlBGreaterThan(String value) {
+            addCriterion("PIC_URL_B >", value, "picUrlB");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlBGreaterThanOrEqualTo(String value) {
+            addCriterion("PIC_URL_B >=", value, "picUrlB");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlBLessThan(String value) {
+            addCriterion("PIC_URL_B <", value, "picUrlB");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlBLessThanOrEqualTo(String value) {
+            addCriterion("PIC_URL_B <=", value, "picUrlB");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlBLike(String value) {
+            addCriterion("PIC_URL_B like", value, "picUrlB");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlBNotLike(String value) {
+            addCriterion("PIC_URL_B not like", value, "picUrlB");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlBIn(List<String> values) {
+            addCriterion("PIC_URL_B in", values, "picUrlB");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlBNotIn(List<String> values) {
+            addCriterion("PIC_URL_B not in", values, "picUrlB");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlBBetween(String value1, String value2) {
+            addCriterion("PIC_URL_B between", value1, value2, "picUrlB");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlBNotBetween(String value1, String value2) {
+            addCriterion("PIC_URL_B not between", value1, value2, "picUrlB");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostIsNull() {
+            addCriterion("PIC_HOST is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostIsNotNull() {
+            addCriterion("PIC_HOST is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostEqualTo(String value) {
+            addCriterion("PIC_HOST =", value, "picHost");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostNotEqualTo(String value) {
+            addCriterion("PIC_HOST <>", value, "picHost");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostGreaterThan(String value) {
+            addCriterion("PIC_HOST >", value, "picHost");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostGreaterThanOrEqualTo(String value) {
+            addCriterion("PIC_HOST >=", value, "picHost");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostLessThan(String value) {
+            addCriterion("PIC_HOST <", value, "picHost");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostLessThanOrEqualTo(String value) {
+            addCriterion("PIC_HOST <=", value, "picHost");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostLike(String value) {
+            addCriterion("PIC_HOST like", value, "picHost");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostNotLike(String value) {
+            addCriterion("PIC_HOST not like", value, "picHost");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostIn(List<String> values) {
+            addCriterion("PIC_HOST in", values, "picHost");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostNotIn(List<String> values) {
+            addCriterion("PIC_HOST not in", values, "picHost");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostBetween(String value1, String value2) {
+            addCriterion("PIC_HOST between", value1, value2, "picHost");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostNotBetween(String value1, String value2) {
+            addCriterion("PIC_HOST not between", value1, value2, "picHost");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostBIsNull() {
+            addCriterion("PIC_HOST_B is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostBIsNotNull() {
+            addCriterion("PIC_HOST_B is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostBEqualTo(String value) {
+            addCriterion("PIC_HOST_B =", value, "picHostB");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostBNotEqualTo(String value) {
+            addCriterion("PIC_HOST_B <>", value, "picHostB");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostBGreaterThan(String value) {
+            addCriterion("PIC_HOST_B >", value, "picHostB");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostBGreaterThanOrEqualTo(String value) {
+            addCriterion("PIC_HOST_B >=", value, "picHostB");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostBLessThan(String value) {
+            addCriterion("PIC_HOST_B <", value, "picHostB");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostBLessThanOrEqualTo(String value) {
+            addCriterion("PIC_HOST_B <=", value, "picHostB");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostBLike(String value) {
+            addCriterion("PIC_HOST_B like", value, "picHostB");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostBNotLike(String value) {
+            addCriterion("PIC_HOST_B not like", value, "picHostB");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostBIn(List<String> values) {
+            addCriterion("PIC_HOST_B in", values, "picHostB");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostBNotIn(List<String> values) {
+            addCriterion("PIC_HOST_B not in", values, "picHostB");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostBBetween(String value1, String value2) {
+            addCriterion("PIC_HOST_B between", value1, value2, "picHostB");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicHostBNotBetween(String value1, String value2) {
+            addCriterion("PIC_HOST_B not between", value1, value2, "picHostB");
+            return (Criteria) this;
+        }
+
         public Criteria andCateIdIsNull() {
             addCriterion("CATE_ID is null");
             return (Criteria) this;
@@ -632,76 +982,6 @@ public class HpNewsExample {
 
         public Criteria andCateIdNotBetween(Long value1, Long value2) {
             addCriterion("CATE_ID not between", value1, value2, "cateId");
-            return (Criteria) this;
-        }
-
-        public Criteria andNewsIdIsNull() {
-            addCriterion("NEWS_ID is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andNewsIdIsNotNull() {
-            addCriterion("NEWS_ID is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andNewsIdEqualTo(String value) {
-            addCriterion("NEWS_ID =", value, "newsId");
-            return (Criteria) this;
-        }
-
-        public Criteria andNewsIdNotEqualTo(String value) {
-            addCriterion("NEWS_ID <>", value, "newsId");
-            return (Criteria) this;
-        }
-
-        public Criteria andNewsIdGreaterThan(String value) {
-            addCriterion("NEWS_ID >", value, "newsId");
-            return (Criteria) this;
-        }
-
-        public Criteria andNewsIdGreaterThanOrEqualTo(String value) {
-            addCriterion("NEWS_ID >=", value, "newsId");
-            return (Criteria) this;
-        }
-
-        public Criteria andNewsIdLessThan(String value) {
-            addCriterion("NEWS_ID <", value, "newsId");
-            return (Criteria) this;
-        }
-
-        public Criteria andNewsIdLessThanOrEqualTo(String value) {
-            addCriterion("NEWS_ID <=", value, "newsId");
-            return (Criteria) this;
-        }
-
-        public Criteria andNewsIdLike(String value) {
-            addCriterion("NEWS_ID like", value, "newsId");
-            return (Criteria) this;
-        }
-
-        public Criteria andNewsIdNotLike(String value) {
-            addCriterion("NEWS_ID not like", value, "newsId");
-            return (Criteria) this;
-        }
-
-        public Criteria andNewsIdIn(List<String> values) {
-            addCriterion("NEWS_ID in", values, "newsId");
-            return (Criteria) this;
-        }
-
-        public Criteria andNewsIdNotIn(List<String> values) {
-            addCriterion("NEWS_ID not in", values, "newsId");
-            return (Criteria) this;
-        }
-
-        public Criteria andNewsIdBetween(String value1, String value2) {
-            addCriterion("NEWS_ID between", value1, value2, "newsId");
-            return (Criteria) this;
-        }
-
-        public Criteria andNewsIdNotBetween(String value1, String value2) {
-            addCriterion("NEWS_ID not between", value1, value2, "newsId");
             return (Criteria) this;
         }
     }

@@ -8,9 +8,13 @@
     <result column="SOURCE" property="source" jdbcType="VARCHAR" />
     <result column="SOUR_URL" property="sourUrl" jdbcType="VARCHAR" />
     <result column="ORI_URL" property="oriUrl" jdbcType="VARCHAR" />
-    <result column="PIC_URL" property="picUrl" jdbcType="VARCHAR" />
-    <result column="CATE_ID" property="cateId" jdbcType="BIGINT" />
     <result column="NEWS_ID" property="newsId" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="PIC_URL" property="picUrl" jdbcType="VARCHAR" />
+    <result column="PIC_URL_B" property="picUrlB" jdbcType="VARCHAR" />
+    <result column="PIC_HOST" property="picHost" jdbcType="VARCHAR" />
+    <result column="PIC_HOST_B" property="picHostB" jdbcType="VARCHAR" />
+    <result column="CATE_ID" property="cateId" jdbcType="BIGINT" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.ky.lebron.domain.HpNews" extends="BaseResultMap" >
     <result column="CONTENT" property="content" jdbcType="LONGVARCHAR" />
@@ -74,7 +78,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    ID, ARTICLE, DATE, SOURCE, SOUR_URL, ORI_URL, PIC_URL, CATE_ID, NEWS_ID
+    ID, ARTICLE, DATE, SOURCE, SOUR_URL, ORI_URL, NEWS_ID, STATUS, PIC_URL, PIC_URL_B, 
+    PIC_HOST, PIC_HOST_B, CATE_ID
   </sql>
   <sql id="Blob_Column_List" >
     CONTENT
@@ -130,12 +135,14 @@
   <insert id="insert" parameterType="com.ky.lebron.domain.HpNews" >
     insert into hp_news (ID, ARTICLE, DATE, 
       SOURCE, SOUR_URL, ORI_URL, 
-      PIC_URL, CATE_ID, NEWS_ID, 
-      CONTENT)
+      NEWS_ID, STATUS, PIC_URL, 
+      PIC_URL_B, PIC_HOST, PIC_HOST_B, 
+      CATE_ID, CONTENT)
     values (#{id,jdbcType=BIGINT}, #{article,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, 
       #{source,jdbcType=VARCHAR}, #{sourUrl,jdbcType=VARCHAR}, #{oriUrl,jdbcType=VARCHAR}, 
-      #{picUrl,jdbcType=VARCHAR}, #{cateId,jdbcType=BIGINT}, #{newsId,jdbcType=VARCHAR}, 
-      #{content,jdbcType=LONGVARCHAR})
+      #{newsId,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{picUrl,jdbcType=VARCHAR}, 
+      #{picUrlB,jdbcType=VARCHAR}, #{picHost,jdbcType=VARCHAR}, #{picHostB,jdbcType=VARCHAR}, 
+      #{cateId,jdbcType=BIGINT}, #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.ky.lebron.domain.HpNews" >
     insert into hp_news
@@ -158,14 +165,26 @@
       <if test="oriUrl != null" >
         ORI_URL,
       </if>
+      <if test="newsId != null" >
+        NEWS_ID,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
       <if test="picUrl != null" >
         PIC_URL,
       </if>
+      <if test="picUrlB != null" >
+        PIC_URL_B,
+      </if>
+      <if test="picHost != null" >
+        PIC_HOST,
+      </if>
+      <if test="picHostB != null" >
+        PIC_HOST_B,
+      </if>
       <if test="cateId != null" >
         CATE_ID,
-      </if>
-      <if test="newsId != null" >
-        NEWS_ID,
       </if>
       <if test="content != null" >
         CONTENT,
@@ -190,14 +209,26 @@
       <if test="oriUrl != null" >
         #{oriUrl,jdbcType=VARCHAR},
       </if>
+      <if test="newsId != null" >
+        #{newsId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
       <if test="picUrl != null" >
         #{picUrl,jdbcType=VARCHAR},
       </if>
+      <if test="picUrlB != null" >
+        #{picUrlB,jdbcType=VARCHAR},
+      </if>
+      <if test="picHost != null" >
+        #{picHost,jdbcType=VARCHAR},
+      </if>
+      <if test="picHostB != null" >
+        #{picHostB,jdbcType=VARCHAR},
+      </if>
       <if test="cateId != null" >
         #{cateId,jdbcType=BIGINT},
-      </if>
-      <if test="newsId != null" >
-        #{newsId,jdbcType=VARCHAR},
       </if>
       <if test="content != null" >
         #{content,jdbcType=LONGVARCHAR},
@@ -231,14 +262,26 @@
       <if test="record.oriUrl != null" >
         ORI_URL = #{record.oriUrl,jdbcType=VARCHAR},
       </if>
+      <if test="record.newsId != null" >
+        NEWS_ID = #{record.newsId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
       <if test="record.picUrl != null" >
         PIC_URL = #{record.picUrl,jdbcType=VARCHAR},
       </if>
+      <if test="record.picUrlB != null" >
+        PIC_URL_B = #{record.picUrlB,jdbcType=VARCHAR},
+      </if>
+      <if test="record.picHost != null" >
+        PIC_HOST = #{record.picHost,jdbcType=VARCHAR},
+      </if>
+      <if test="record.picHostB != null" >
+        PIC_HOST_B = #{record.picHostB,jdbcType=VARCHAR},
+      </if>
       <if test="record.cateId != null" >
         CATE_ID = #{record.cateId,jdbcType=BIGINT},
-      </if>
-      <if test="record.newsId != null" >
-        NEWS_ID = #{record.newsId,jdbcType=VARCHAR},
       </if>
       <if test="record.content != null" >
         CONTENT = #{record.content,jdbcType=LONGVARCHAR},
@@ -256,9 +299,13 @@
       SOURCE = #{record.source,jdbcType=VARCHAR},
       SOUR_URL = #{record.sourUrl,jdbcType=VARCHAR},
       ORI_URL = #{record.oriUrl,jdbcType=VARCHAR},
-      PIC_URL = #{record.picUrl,jdbcType=VARCHAR},
-      CATE_ID = #{record.cateId,jdbcType=BIGINT},
       NEWS_ID = #{record.newsId,jdbcType=VARCHAR},
+      STATUS = #{record.status,jdbcType=VARCHAR},
+      PIC_URL = #{record.picUrl,jdbcType=VARCHAR},
+      PIC_URL_B = #{record.picUrlB,jdbcType=VARCHAR},
+      PIC_HOST = #{record.picHost,jdbcType=VARCHAR},
+      PIC_HOST_B = #{record.picHostB,jdbcType=VARCHAR},
+      CATE_ID = #{record.cateId,jdbcType=BIGINT},
       CONTENT = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -272,9 +319,13 @@
       SOURCE = #{record.source,jdbcType=VARCHAR},
       SOUR_URL = #{record.sourUrl,jdbcType=VARCHAR},
       ORI_URL = #{record.oriUrl,jdbcType=VARCHAR},
+      NEWS_ID = #{record.newsId,jdbcType=VARCHAR},
+      STATUS = #{record.status,jdbcType=VARCHAR},
       PIC_URL = #{record.picUrl,jdbcType=VARCHAR},
-      CATE_ID = #{record.cateId,jdbcType=BIGINT},
-      NEWS_ID = #{record.newsId,jdbcType=VARCHAR}
+      PIC_URL_B = #{record.picUrlB,jdbcType=VARCHAR},
+      PIC_HOST = #{record.picHost,jdbcType=VARCHAR},
+      PIC_HOST_B = #{record.picHostB,jdbcType=VARCHAR},
+      CATE_ID = #{record.cateId,jdbcType=BIGINT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -297,14 +348,26 @@
       <if test="oriUrl != null" >
         ORI_URL = #{oriUrl,jdbcType=VARCHAR},
       </if>
+      <if test="newsId != null" >
+        NEWS_ID = #{newsId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
       <if test="picUrl != null" >
         PIC_URL = #{picUrl,jdbcType=VARCHAR},
       </if>
+      <if test="picUrlB != null" >
+        PIC_URL_B = #{picUrlB,jdbcType=VARCHAR},
+      </if>
+      <if test="picHost != null" >
+        PIC_HOST = #{picHost,jdbcType=VARCHAR},
+      </if>
+      <if test="picHostB != null" >
+        PIC_HOST_B = #{picHostB,jdbcType=VARCHAR},
+      </if>
       <if test="cateId != null" >
         CATE_ID = #{cateId,jdbcType=BIGINT},
-      </if>
-      <if test="newsId != null" >
-        NEWS_ID = #{newsId,jdbcType=VARCHAR},
       </if>
       <if test="content != null" >
         CONTENT = #{content,jdbcType=LONGVARCHAR},
@@ -319,9 +382,13 @@
       SOURCE = #{source,jdbcType=VARCHAR},
       SOUR_URL = #{sourUrl,jdbcType=VARCHAR},
       ORI_URL = #{oriUrl,jdbcType=VARCHAR},
-      PIC_URL = #{picUrl,jdbcType=VARCHAR},
-      CATE_ID = #{cateId,jdbcType=BIGINT},
       NEWS_ID = #{newsId,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      PIC_URL = #{picUrl,jdbcType=VARCHAR},
+      PIC_URL_B = #{picUrlB,jdbcType=VARCHAR},
+      PIC_HOST = #{picHost,jdbcType=VARCHAR},
+      PIC_HOST_B = #{picHostB,jdbcType=VARCHAR},
+      CATE_ID = #{cateId,jdbcType=BIGINT},
       CONTENT = #{content,jdbcType=LONGVARCHAR}
     where ID = #{id,jdbcType=BIGINT}
   </update>
@@ -332,9 +399,13 @@
       SOURCE = #{source,jdbcType=VARCHAR},
       SOUR_URL = #{sourUrl,jdbcType=VARCHAR},
       ORI_URL = #{oriUrl,jdbcType=VARCHAR},
+      NEWS_ID = #{newsId,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
       PIC_URL = #{picUrl,jdbcType=VARCHAR},
-      CATE_ID = #{cateId,jdbcType=BIGINT},
-      NEWS_ID = #{newsId,jdbcType=VARCHAR}
+      PIC_URL_B = #{picUrlB,jdbcType=VARCHAR},
+      PIC_HOST = #{picHost,jdbcType=VARCHAR},
+      PIC_HOST_B = #{picHostB,jdbcType=VARCHAR},
+      CATE_ID = #{cateId,jdbcType=BIGINT}
     where ID = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
