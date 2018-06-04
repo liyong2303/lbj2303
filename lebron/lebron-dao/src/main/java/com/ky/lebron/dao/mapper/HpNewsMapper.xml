@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ky.lebron.dao.HpNewsMapper" >
+  <resultMap id="BaseResultMap" type="com.ky.lebron.domain.HpNews" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="ARTICLE" property="article" jdbcType="VARCHAR" />
+    <result column="DATE" property="date" jdbcType="TIMESTAMP" />
+    <result column="SOURCE" property="source" jdbcType="VARCHAR" />
+    <result column="SOUR_URL" property="sourUrl" jdbcType="VARCHAR" />
+    <result column="ORI_URL" property="oriUrl" jdbcType="VARCHAR" />
+    <result column="PIC_URL" property="picUrl" jdbcType="VARCHAR" />
+    <result column="CATE_ID" property="cateId" jdbcType="BIGINT" />
+    <result column="NEWS_ID" property="newsId" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.ky.lebron.domain.HpNews" extends="BaseResultMap" >
+    <result column="CONTENT" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, ARTICLE, DATE, SOURCE, SOUR_URL, ORI_URL, PIC_URL, CATE_ID, NEWS_ID
+  </sql>
+  <sql id="Blob_Column_List" >
+    CONTENT
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.ky.lebron.domain.HpNewsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from hp_news
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ky.lebron.domain.HpNewsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from hp_news
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from hp_news
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from hp_news
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ky.lebron.domain.HpNewsExample" >
+    delete from hp_news
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ky.lebron.domain.HpNews" >
+    insert into hp_news (ID, ARTICLE, DATE, 
+      SOURCE, SOUR_URL, ORI_URL, 
+      PIC_URL, CATE_ID, NEWS_ID, 
+      CONTENT)
+    values (#{id,jdbcType=BIGINT}, #{article,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, 
+      #{source,jdbcType=VARCHAR}, #{sourUrl,jdbcType=VARCHAR}, #{oriUrl,jdbcType=VARCHAR}, 
+      #{picUrl,jdbcType=VARCHAR}, #{cateId,jdbcType=BIGINT}, #{newsId,jdbcType=VARCHAR}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ky.lebron.domain.HpNews" >
+    insert into hp_news
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="article != null" >
+        ARTICLE,
+      </if>
+      <if test="date != null" >
+        DATE,
+      </if>
+      <if test="source != null" >
+        SOURCE,
+      </if>
+      <if test="sourUrl != null" >
+        SOUR_URL,
+      </if>
+      <if test="oriUrl != null" >
+        ORI_URL,
+      </if>
+      <if test="picUrl != null" >
+        PIC_URL,
+      </if>
+      <if test="cateId != null" >
+        CATE_ID,
+      </if>
+      <if test="newsId != null" >
+        NEWS_ID,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="article != null" >
+        #{article,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="sourUrl != null" >
+        #{sourUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="oriUrl != null" >
+        #{oriUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="picUrl != null" >
+        #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="cateId != null" >
+        #{cateId,jdbcType=BIGINT},
+      </if>
+      <if test="newsId != null" >
+        #{newsId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ky.lebron.domain.HpNewsExample" resultType="java.lang.Integer" >
+    select count(*) from hp_news
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update hp_news
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.article != null" >
+        ARTICLE = #{record.article,jdbcType=VARCHAR},
+      </if>
+      <if test="record.date != null" >
+        DATE = #{record.date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.source != null" >
+        SOURCE = #{record.source,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sourUrl != null" >
+        SOUR_URL = #{record.sourUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oriUrl != null" >
+        ORI_URL = #{record.oriUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.picUrl != null" >
+        PIC_URL = #{record.picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cateId != null" >
+        CATE_ID = #{record.cateId,jdbcType=BIGINT},
+      </if>
+      <if test="record.newsId != null" >
+        NEWS_ID = #{record.newsId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null" >
+        CONTENT = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update hp_news
+    set ID = #{record.id,jdbcType=BIGINT},
+      ARTICLE = #{record.article,jdbcType=VARCHAR},
+      DATE = #{record.date,jdbcType=TIMESTAMP},
+      SOURCE = #{record.source,jdbcType=VARCHAR},
+      SOUR_URL = #{record.sourUrl,jdbcType=VARCHAR},
+      ORI_URL = #{record.oriUrl,jdbcType=VARCHAR},
+      PIC_URL = #{record.picUrl,jdbcType=VARCHAR},
+      CATE_ID = #{record.cateId,jdbcType=BIGINT},
+      NEWS_ID = #{record.newsId,jdbcType=VARCHAR},
+      CONTENT = #{record.content,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update hp_news
+    set ID = #{record.id,jdbcType=BIGINT},
+      ARTICLE = #{record.article,jdbcType=VARCHAR},
+      DATE = #{record.date,jdbcType=TIMESTAMP},
+      SOURCE = #{record.source,jdbcType=VARCHAR},
+      SOUR_URL = #{record.sourUrl,jdbcType=VARCHAR},
+      ORI_URL = #{record.oriUrl,jdbcType=VARCHAR},
+      PIC_URL = #{record.picUrl,jdbcType=VARCHAR},
+      CATE_ID = #{record.cateId,jdbcType=BIGINT},
+      NEWS_ID = #{record.newsId,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ky.lebron.domain.HpNews" >
+    update hp_news
+    <set >
+      <if test="article != null" >
+        ARTICLE = #{article,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        DATE = #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="source != null" >
+        SOURCE = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="sourUrl != null" >
+        SOUR_URL = #{sourUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="oriUrl != null" >
+        ORI_URL = #{oriUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="picUrl != null" >
+        PIC_URL = #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="cateId != null" >
+        CATE_ID = #{cateId,jdbcType=BIGINT},
+      </if>
+      <if test="newsId != null" >
+        NEWS_ID = #{newsId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ky.lebron.domain.HpNews" >
+    update hp_news
+    set ARTICLE = #{article,jdbcType=VARCHAR},
+      DATE = #{date,jdbcType=TIMESTAMP},
+      SOURCE = #{source,jdbcType=VARCHAR},
+      SOUR_URL = #{sourUrl,jdbcType=VARCHAR},
+      ORI_URL = #{oriUrl,jdbcType=VARCHAR},
+      PIC_URL = #{picUrl,jdbcType=VARCHAR},
+      CATE_ID = #{cateId,jdbcType=BIGINT},
+      NEWS_ID = #{newsId,jdbcType=VARCHAR},
+      CONTENT = #{content,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ky.lebron.domain.HpNews" >
+    update hp_news
+    set ARTICLE = #{article,jdbcType=VARCHAR},
+      DATE = #{date,jdbcType=TIMESTAMP},
+      SOURCE = #{source,jdbcType=VARCHAR},
+      SOUR_URL = #{sourUrl,jdbcType=VARCHAR},
+      ORI_URL = #{oriUrl,jdbcType=VARCHAR},
+      PIC_URL = #{picUrl,jdbcType=VARCHAR},
+      CATE_ID = #{cateId,jdbcType=BIGINT},
+      NEWS_ID = #{newsId,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
