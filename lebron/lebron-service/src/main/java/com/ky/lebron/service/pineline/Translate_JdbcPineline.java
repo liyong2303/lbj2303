@@ -22,7 +22,6 @@ public class Translate_JdbcPineline implements Pipeline {
 	private static final Logger log = LoggerFactory.getLogger(Translate_JdbcPineline.class);
 
 	@Autowired
-
 	private HpTranslateMapper translateMapper;
 
 	@Override
@@ -43,11 +42,11 @@ public class Translate_JdbcPineline implements Pipeline {
 			log.error("", e);
 		}
 		translate.setOriUrl(resultItems.get("oriUrl"));
-		translate.setAuthor("author");
-		translate.setAuthorUrl("authorUrl");
+		translate.setAuthor(resultItems.get("author"));
+		translate.setAuthorUrl(resultItems.get("authorUrl"));
 		translate.setCateId(9l);
-		translate.setEngilshUrl("engUrl");
-		translate.setTranslateId("transId");
+		translate.setEngilshUrl(resultItems.get("engUrl"));
+		translate.setTranslateId(resultItems.get("id"));
 		
 		if (translate.getTranslateId() != null) {
 			int i = translateMapper.insert(translate);
@@ -55,6 +54,8 @@ public class Translate_JdbcPineline implements Pipeline {
 				log.info("插入成功");
 			} else {
 				log.info("插入失败");
+				//需要对content内容进行处理
+				
 			}
 		}
 
