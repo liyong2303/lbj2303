@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ky.lebron.common.PageProcessor.CavNewsPageProcessor;
+import com.ky.lebron.common.PageProcessor.CavTranslatePageProcessor;
 import com.ky.lebron.service.pineline.JdbcPineline;
+import com.ky.lebron.service.pineline.Translate_JdbcPineline;
 
 import us.codecraft.webmagic.model.OOSpider;
 
@@ -20,12 +22,17 @@ public class HupuNewsCavController {
 	@Autowired
 	private CavNewsPageProcessor cavNewsPageProcessor;
 	@Autowired
+	private CavTranslatePageProcessor cavTranslatePageProcessor;
+	
+	@Autowired
 	private JdbcPineline jdbcPineline;
+	@Autowired
+	private Translate_JdbcPineline translate_JdbcPineline;
 
-	@RequestMapping("/news")
+//	@RequestMapping("/news")
 	public String getHupuNews() {
 		// TODO 需要循环抓取100页的数据
-		for (int i = 1; i < 100; i++) {
+		for (int i = 1; i <=100; i++) {
 			try {
 				OOSpider.create(cavNewsPageProcessor).addUrl("https://voice.hupu.com/nba/tag/3023-" + i + ".html")
 						.addPipeline(jdbcPineline).thread(1).run();
@@ -34,6 +41,23 @@ public class HupuNewsCavController {
 				break;
 			}
 		}
+		return null;
+	}
+
+	@RequestMapping("/translate")
+	public String getHupuTranslate() {
+		// TODO 需要循环抓取100页的数据
+	/*	for (int i = 1; i <=27; i++) {
+			try {
+				OOSpider.create(cavTranslatePageProcessor).addUrl("https://bbs.hupu.com/cavaliers-type3-" + i )
+				.addPipeline(translate_JdbcPineline).thread(5).run();
+			} catch (Exception e) {
+				log.error("",e);
+				break;
+			}
+		}*/
+		OOSpider.create(cavTranslatePageProcessor).addUrl("https://bbs.hupu.com/cavaliers-type3-1"  )
+		.addPipeline(translate_JdbcPineline).thread(5).run();
 		return null;
 	}
 }
